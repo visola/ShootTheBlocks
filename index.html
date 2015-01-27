@@ -8,14 +8,11 @@
       padding: 0;
     }
   </style>
-  <script type="text/javascript" src="/js/three.min.js"></script>
-  <script type="text/javascript" src="/js/physi.js"></script>
-
+  <script type="text/javascript" src="/js/lib/three.min.js"></script>
+  <script type="text/javascript" src="/js/lib/physi.js"></script>
   <script type="text/javascript">
-    Physijs.scripts.worker = '/js/physijs_worker.js';
-    Physijs.scripts.ammo = '/js/ammo.js';
-
-    var initScene, render, renderer, scene, camera, box, floor, sphere;
+    Physijs.scripts.worker = '/js/lib/physijs_worker.js';
+    Physijs.scripts.ammo = '/js/lib/ammo.js';
     
     var h = window.innerHeight;
     var w = window.innerWidth;
@@ -27,19 +24,10 @@
         restitution
       );
     }
-
+  </script>
+  <script type="text/javascript" src="/js/scene.js"></script>
+  <script>
     initScene = function() {
-      renderer = new THREE.WebGLRenderer({ antialias: true });
-      renderer.setSize(w, h);
-      document.getElementById( 'viewport' ).appendChild( renderer.domElement );
-      
-      scene = new Physijs.Scene;
-      
-      camera = new THREE.PerspectiveCamera(35, w / h, 1, 1000);
-      camera.position.set( 100, 50, 100 );
-      camera.lookAt( scene.position );
-      scene.add( camera );
-      
       box = new Physijs.BoxMesh(
         new THREE.CubeGeometry( 5, 5, 5 ),
         createMaterial(0x888888,0.8,0.2),
@@ -73,7 +61,7 @@
       requestAnimationFrame( render );
     };
 
-    window.onload = initScene;
+    window.addEventListener("load", initScene);
   </script>
 </head>
 
