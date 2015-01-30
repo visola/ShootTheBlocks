@@ -1,37 +1,30 @@
-var keyDownStart = 0;
+var directionH = 0,
+  directionV = 0
+  power = 100;
 
-function handleKeyDown (e) {
-  if (keyDownStart == 0) {
-    keyDownStart = new Date().getTime();
-  }
-  
-  switch (e.keyCode) {
-    case 32: // Space
-      break;
-    default:
-  }
-}
-
-var y = 0;
-
-function handleKeyUp (e) {
-  switch (e.keyCode) {
-    case 32: // Space
-      var power = (new Date().getTime() - keyDownStart) / 2;
-      if (power > 150) power = 150;
-      sphere.setLinearVelocity(new THREE.Vector3(-power,0,y));
+function handleKeyPress (e) {
+  var char = String.fromCharCode(e.keyCode);
+  switch (char) {
+    case ' ': // Space
+      sphere.setLinearVelocity(new THREE.Vector3(-power,directionV,directionH));
       setTimeout(createSphere, 1500);
       break;
-    case 37:
-      y += 10;
+    case 'a':
+      directionH += 10;
       break;
-    case 39:
-      y -= 10;
+    case 'd':
+      directionH -= 10;
+      break;
+    case 'w':
+      directionV += 2;
+      break;
+    case 's':
+      directionV -= 2;
       break;
     default:
   }
-  keyDownStart = 0
+  
+  if (directionV < 0) directionV = 0;
 }
 
-window.addEventListener("keydown", handleKeyDown);
-window.addEventListener("keyup", handleKeyUp);
+window.addEventListener("keypress", handleKeyPress);
