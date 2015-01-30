@@ -1,12 +1,13 @@
 var directionH = 0,
-  directionV = 0
-  power = 100;
+  directionV = 0,
+  power = 100,
+  velocity;
 
 function handleKeyPress (e) {
   var char = String.fromCharCode(e.keyCode);
   switch (char) {
     case ' ': // Space
-      sphere.setLinearVelocity(new THREE.Vector3(-power,directionV,directionH));
+      sphere.setLinearVelocity(velocity);
       setTimeout(createSphere, 1500);
       break;
     case 'a':
@@ -25,6 +26,8 @@ function handleKeyPress (e) {
   }
   
   if (directionV < 0) directionV = 0;
+  velocity = new THREE.Vector3(-power,directionV,directionH)
+  indicator.setDirection(velocity.clone().normalize());
 }
 
 window.addEventListener("keypress", handleKeyPress);
