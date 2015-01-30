@@ -1,6 +1,6 @@
 var keyDownStart = 0;
 
-function keyDown (e) {
+function handleKeyDown (e) {
   if (keyDownStart == 0) {
     keyDownStart = new Date().getTime();
   }
@@ -14,7 +14,7 @@ function keyDown (e) {
 
 var y = 0;
 
-function keyUp (e) {
+function handleKeyUp (e) {
   switch (e.keyCode) {
     case 32: // Space
       var power = (new Date().getTime() - keyDownStart) / 2;
@@ -33,5 +33,5 @@ function keyUp (e) {
   keyDownStart = 0
 }
 
-window.addEventListener("keydown", keyDown);
-window.addEventListener("keyup", keyUp);
+window.addEventListener("keydown", handleKeyDown);
+window.addEventListener("keyup", handleKeyUp);
