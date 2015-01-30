@@ -3,7 +3,6 @@ var camera, floor, light, renderer, scene;
 scene = new Physijs.Scene;
 
 camera = new THREE.PerspectiveCamera(35, w / h, 1, 1000);
-camera.position.set( 100, 50, 100 );
 camera.lookAt( scene.position );
 scene.add( camera );
 
