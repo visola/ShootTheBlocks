@@ -12,16 +12,16 @@ function handleKeyPress (e) {
       setTimeout(createSphere, 1500);
       break;
     case 'a':
-      directionH += 10;
+      directionH += 1;
       break;
     case 'd':
-      directionH -= 10;
+      directionH -= 1;
       break;
     case 'w':
-      directionV += 2;
+      directionV += 1;
       break;
     case 's':
-      directionV -= 2;
+      directionV -= 1;
       break;
     case 'q':
       power -= 10;
