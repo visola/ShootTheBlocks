@@ -1,6 +1,7 @@
 var box, i, j, k,
-  floorWidth = floor.geometry.boundingBox.max.x - floor.geometry.boundingBox.min.x,
   boxSize = 5,
+  boxInitX = - floorLength / 2 + boxSize / 2,
+  boxInitZ = floorWidth / 2 - boxSize / 2,
   space = 2,
   numberOfBoxes = Math.floor(floorWidth / (boxSize + space)),
   numberOfRows = 3,
@@ -16,9 +17,9 @@ for (k = 0; k < numberOfColumns; k++) {
       );
       
       box.castShadow = true;
-      box.position.x = -45 + k * boxSize;
+      box.position.x = boxInitX + k * boxSize;
       box.position.y = j * (boxSize) + 3;
-      box.position.z = i * (boxSize + 2) - 45 + (j%2) * boxSize / 3 - (k%2) * boxSize / 3;
+      box.position.z = i * (boxSize + 2) - boxInitZ + (j%2) * boxSize / 3 - (k%2) * boxSize / 3;
       scene.add(box);
     }
   }
