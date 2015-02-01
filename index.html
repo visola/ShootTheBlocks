@@ -17,32 +17,24 @@
     var h = window.innerHeight;
     var w = window.innerWidth;
     
-    createMaterial = function (color, friction, restitution) {
-      return Physijs.createMaterial(
-        new THREE.MeshLambertMaterial({color:color}),
-        friction,
-        restitution
-      );
-    }
+    // Namespace holder
+    var game = {
+      functions:{}, // Hold utility functions
+      objects:{} // Hold scene objects
+    };
   </script>
+  <script type="text/javascript" src="/js/functions.js"></script>
   <script type="text/javascript" src="/js/scene.js"></script>
-  <script type="text/javascript" src="/js/objects/world.js"></script>
-  <script type="text/javascript" src="/js/objects/projectile.js"></script>
+  <script type="text/javascript" src="/js/renderer.js"></script>
+  <script type="text/javascript" src="/js/objects/camera.js"></script>
+  <script type="text/javascript" src="/js/objects/light.js"></script>
+  <script type="text/javascript" src="/js/objects/floor.js"></script>
+  <script type="text/javascript" src="/js/objects/bullet.js"></script>
   <script type="text/javascript" src="/js/objects/boxes.js"></script>
   <script type="text/javascript" src="/js/objects/indicator.js"></script>
-  <script type="text/javascript" src="/js/controls/velocity.js"></script>
+  <script type="text/javascript" src="/js/controls/bullet.js"></script>
   <script type="text/javascript" src="/js/controls/camera.js"></script>
-  <script>
-    render = function() {
-      scene.simulate(); // run physics
-      renderer.render( scene, camera); // render the scene
-      requestAnimationFrame( render );
-    };
-
-    window.addEventListener("load", function () {
-      requestAnimationFrame( render );
-    });
-  </script>
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
 </head>
 <body>
   <div id="viewport"></div>
