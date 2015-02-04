@@ -4,7 +4,7 @@
   bullet.radius = 3;
   bullet.weight = 50;
 
-  var createSphere = game.functions.createSphere = function () {
+  var createBullet = bullet.createBullet = function () {
     var sphere = new Physijs.SphereMesh(
       new THREE.SphereGeometry(bullet.radius, 32, 32),
       game.functions.createMaterial(0xFF0000,0.3,0.5),
@@ -17,5 +17,9 @@
     return sphere;
   }
 
-  game.scene.add(bullet.mesh = createSphere());
+  var newBullet = bullet.newBullet = function () {
+    game.scene.add(bullet.mesh = createBullet());
+  }
+  
+  newBullet();
 })();

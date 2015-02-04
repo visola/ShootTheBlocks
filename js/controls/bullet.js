@@ -3,7 +3,6 @@
     directionV = 0,
     power = 100,
     indicator = game.objects.indicator,
-    bulletMesh = game.objects.bullet.mesh,
     velocity;
 
   function handleKeyPress (e) {
@@ -11,7 +10,8 @@
     switch (char) {
       case ' ': // Space
         calculateVelocity();
-        bulletMesh.setLinearVelocity(velocity);
+        game.objects.bullet.mesh.setLinearVelocity(velocity);
+        setTimeout(game.objects.bullet.newBullet, 5000);
         break;
       case 'a':
         directionH += 1;
