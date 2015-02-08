@@ -7,7 +7,7 @@ I wrote this to learn how both frameworks work and also to experience what is li
 (even the simplest one like this).
 
 This is how it looks like:
-![alt tag](https://raw.github.com/visola/ShootTheBlocks/master/screens-shot.png)
+![alt tag](https://raw.githubusercontent.com/visola/ShootTheBlocks/master/screen-shot.png)
 
 Some of the things I've used in this code that you may think is useful:
 
