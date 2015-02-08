@@ -1,7 +1,7 @@
 (function () {
-  var directionH = 0,
-    directionV = 0,
-    power = 100,
+  var directionH = 17,
+    directionV = 15,
+    power = 150,
     indicator = game.objects.indicator,
     velocity;
 
