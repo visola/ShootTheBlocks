@@ -5,7 +5,7 @@
     initZ = game.objects.floor.width / 2,
     margin = 10,
     lastPosX = initX + margin,
-    lastPosY = initY + 0.1,
+    lastPosY = initY + 1,
     lastPosZ = initZ - margin,
     objectsToAdd = [];
 
