@@ -1,10 +1,13 @@
 (function() {
   var mouseDown = false,
     lastMouseEvent = null,
-    cameraRadius = game.objects.floor.length * 0.8,
-    cameraHeight = 50,
+    INITIAL_TETA = 1.40,
+    INITIAL_PHI = 0.20,
+    INITIAL_RADIUS = game.objects.floor.length * 0.8,
+    cameraRadius = INITIAL_RADIUS,
+    cameraTeta = INITIAL_TETA,
+    cameraPhi = INITIAL_PHI,
     cameraLookAt = new THREE.Vector3(),
-    cameraTeta = 0.11,
     camera = game.objects.camera;
 
   function handleMouseDown(e) {
@@ -14,8 +17,8 @@
 
   function handleMouseMove(e) {
     if (mouseDown) { // Dragging
-      cameraTeta += (e.x - lastMouseEvent.x) / 1000;
-      cameraHeight += (e.y - lastMouseEvent.y) / 10;
+      cameraPhi += (e.x - lastMouseEvent.x) / 1000;
+      cameraTeta -= (e.y - lastMouseEvent.y) / 1000;
       updateCameraPosition();
       lastMouseEvent = e;
     }
@@ -32,16 +35,16 @@
   }
   
   function resetCamera(e) {
-    cameraHeight = 50;
-    cameraRadius = game.objects.floor.length * 0.8;
-    cameraTeta = 0.11;
+    cameraTeta = INITIAL_TETA;
+    cameraPhi = INITIAL_PHI;
+    cameraRadius = INITIAL_RADIUS;
     updateCameraPosition();
   }
 
   function updateCameraPosition() {
-    camera.position.x = cameraRadius * Math.cos(cameraTeta);
-    camera.position.y = cameraHeight;
-    camera.position.z = cameraRadius * Math.sin(cameraTeta);
+    camera.position.x = cameraRadius * Math.sin(cameraTeta) * Math.cos(cameraPhi);
+    camera.position.z = cameraRadius * Math.sin(cameraTeta) * Math.sin(cameraPhi);
+    camera.position.y = cameraRadius * Math.cos(cameraTeta);
     camera.lookAt(cameraLookAt);
   }
 
