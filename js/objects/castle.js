@@ -1,5 +1,6 @@
 (function() {
-  var i, j,
+  var i, j, laidBrick = false,
+    brickCount = 10, rowCount = 5,
     initX = - game.objects.floor.length / 2,
     initY = game.objects.floor.height / 2,
     initZ = game.objects.floor.width / 2,
@@ -52,11 +53,16 @@
       newY = lastPosY + (offsetY || 0) + 0.1,
       newZ = lastPosZ - (offsetZ || 0);
     
-    game.scene.add(createBox(props, newX, newY, newZ, rotate));
-    
+    // Last row, lay every other brick only
+    if (j == rowCount - 1 && laidBrick) {
+      movePos(newX, newY, newZ);
+    } else {
+      game.scene.add(createBox(props, newX, newY, newZ, rotate));
+    }
     lastPosX = newX;
     lastPosY = newY;
     lastPosZ = newZ;
+    laidBrick = !laidBrick;
   }
   
   var movePos = function (offsetX, offsetY, offsetZ) {
@@ -65,8 +71,7 @@
     lastPosZ += offsetZ;
   }
 
-  var brickCount = 10;
-  for (j = 0; j < 5; j++) {
+  for (j = 0; j < rowCount; j++) {
     for (var i = 0; i < brickCount; i++) {
       layBox(brick, 0, 0, brick.length, false);
     }
