@@ -30,6 +30,13 @@
     cameraLookAt.x -= e.wheelDeltaX;
     updateCameraPosition();
   }
+  
+  function resetCamera(e) {
+    cameraHeight = 50;
+    cameraRadius = game.objects.floor.length * 0.8;
+    cameraTeta = 0.11;
+    updateCameraPosition();
+  }
 
   function updateCameraPosition() {
     camera.position.x = cameraRadius * Math.cos(cameraTeta);
@@ -42,6 +49,10 @@
   window.addEventListener('mousemove', handleMouseMove);
   window.addEventListener('mouseup', handleMouseUp);
   window.addEventListener('mousewheel', handleMouseWheel);
-
+  
+  window.addEventListener('load', function () {
+    document.getElementById('reset-camera').addEventListener('click', resetCamera);
+  });
+  
   updateCameraPosition();
 })();

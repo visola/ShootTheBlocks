@@ -7,6 +7,20 @@
       margin: 0;
       padding: 0;
     }
+    
+    #panel {
+      border: 1px solid #eee;
+      font-family: sans-serif;
+      padding: 10px 20px;
+      position: absolute;
+      right: 15px;
+      top: 15px;
+    }
+    
+    #panel h2 {
+      font-size: 1em;
+      margin: 2px 5px;
+    }
   </style>
   <script type="text/javascript" src="/js/lib/three.min.js"></script>
   <script type="text/javascript" src="/js/lib/physi.js"></script>
@@ -38,5 +52,15 @@
 </head>
 <body>
   <div id="viewport"></div>
+  <div id="panel">
+    <h2>Controls</h2>
+    <ul>
+      <li>w, s - change direction up and down</li>
+      <li>a, d - change direction right or left</li>
+      <li>q, e - change power of the ball</li>
+      <li>space - shoot</li>
+    </ul>
+    <button id="reset-camera">Reset Camera</button>
+  <div>
 </body>
 </html>
